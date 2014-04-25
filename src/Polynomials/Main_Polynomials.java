@@ -19,10 +19,9 @@ public class Main_Polynomials {
 			Polynomials_Helper p = new Polynomials_Helper(fileName);
 			//new class just for computing root
 			
-			p.solve(1.000000001);
-			p.solve(2.000001);
-			//p.solve(15);
-			//p.solve(3.0000001);
+			p.solve(1.000001);
+			p.solve(2.0001);
+			p.solve(3.000001);
 		}
 	}
 }

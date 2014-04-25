@@ -1,10 +1,13 @@
 package Polynomials;
 
-public class PolynomialRoot implements Runnable{
+import java.util.concurrent.Callable;
+
+public class PolynomialRoot implements Callable<double[]>{
 
 	double[] myPolynomial;
 	int n; //gradul polinomului
 	double initialValue;
+	double root;
 	
 	public PolynomialRoot(double[] array, int n, double initialValue) {
 		this.myPolynomial = array;
@@ -45,6 +48,8 @@ public class PolynomialRoot implements Runnable{
 		else
 			System.out.println("Trebuie ales alta radacina initala, sirul formal este divergent.");
 		
+		this.root = root;
+		
 		return root;
 	}
 	
@@ -79,29 +84,14 @@ public class PolynomialRoot implements Runnable{
 		/*we add the last element, the one with no x*/
 		result[result.length - 1] += array[array.length - 1];
 		
-		//this.printArray(result, "Polinomul derivat:");
-		
 		return result;
 	}
 	
-	private void something(int n) {
-		n = n * 2;
-		System.out.println("n --> " + n);
-		//return ++n;
-	}
-	
-	public void run() {
+	/*implements the call method, from the abstract class Callable, that creates a thread and waits for the response*/
+	public double[] call() {
 		this.findRoot(this.initialValue);
-		//this.something((int)this.initialValue);
-	}
-	
-	public void startThread(double initialRoot) {
-		Thread thread = new Thread(new PolynomialRoot(myPolynomial, n, initialRoot));
-		this.initialValue = initialRoot;
-		
-		thread.start();
-		this.findRoot(this.initialValue);
-		//System.out.println("main");
-		//this.something((int)this.initialValue);
+		double[] rootArray = new double[1];
+		rootArray[0] = this.root;
+		return rootArray;
 	}
 }
