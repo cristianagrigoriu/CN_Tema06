@@ -17,11 +17,19 @@ public class Main_Polynomials {
 		
 		if (fileName != null) {
 			Polynomials_Helper p = new Polynomials_Helper(fileName);
-			//new class just for computing root
 			
-			p.solve(1.000001);
-			p.solve(2.0001);
-			p.solve(3.000001);
+			double r = p.getR();
+			
+			double random;
+			
+			int i = 0;
+			
+			while (i < 4) {
+				random = Math.random() * 2 * r - r;
+				System.out.println("r: " + r + " random: " + random);
+				p.solve(random);
+				i++;
+			}
 		}
 	}
 }

@@ -46,7 +46,8 @@ public class PolynomialRoot implements Callable<double[]>{
 			//this.writeToFile(root);
 		}
 		else
-			System.out.println("Trebuie ales alta radacina initala, sirul formal este divergent.");
+			//System.out.println("Trebuie ales alta radacina initala, sirul formal este divergent.");
+			System.out.println("Radacina gasita: " + root);
 		
 		this.root = root;
 		

@@ -41,6 +41,17 @@ public class Polynomials_Helper{
         executor.shutdown();
 	}
 	
+	public double getR() {
+		double max = Math.abs(myPolynomial[0]);
+		for (int i=1; i<myPolynomial.length; i++) {
+			if (Math.abs(myPolynomial[i])> max) {
+				max = myPolynomial[i];
+			}
+		}
+		
+		return (double)(Math.abs(myPolynomial[0]) + max) / (Math.abs(myPolynomial[0]));
+	}
+	
 	private void writeToFile(double value) {
 		/*we assume the file doesn't already exist*/
 		boolean newlyCreated = true, alreadyWritten = false;
